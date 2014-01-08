@@ -6,6 +6,11 @@
 #include <vtkRenderWindow.h>
 #include <vtkRenderer.h>
 
+#include <vtkConeSource.h>
+#include <vtkPolyDataMapper.h>
+
+
+
 namespace Ui {
 class MainWindow;
 }
