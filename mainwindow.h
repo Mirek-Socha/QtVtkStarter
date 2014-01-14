@@ -10,7 +10,6 @@
 #include <vtkPolyDataMapper.h>
 
 
-
 namespace Ui {
 class MainWindow;
 }

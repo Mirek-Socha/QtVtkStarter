@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     renderer->AddActor(coneActor);
     renderer->SetBackground(0.1, 0.2, 0.4);
 
-    // sprzątanie
+    // sprzątanie obiektów VTK
     cone->Delete();
     coneMapper->Delete();
     coneActor->Delete();
