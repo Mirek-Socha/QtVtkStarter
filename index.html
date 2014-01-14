@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>QtVtkStarter by Mirek-Socha</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>QtVtkStarter</h1>
+        <h2>Projekt łączący Qt i VTK</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/Mirek-Socha/QtVtkStarter/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/Mirek-Socha/QtVtkStarter/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/Mirek-Socha/QtVtkStarter" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a name="qtvtkstarter" class="anchor" href="#qtvtkstarter"><span class="octicon octicon-link"></span></a>QtVtkStarter</h1>
+
+<h3>
+<a name="qtvtkstarter---szkielet-programu-%C5%82%C4%85cz%C4%85cego-qt-i-vtk-w-jedn%C4%85-aplikacj%C4%99-okienkow%C4%85-miros%C5%82aw-socha-2014" class="anchor" href="#qtvtkstarter---szkielet-programu-%C5%82%C4%85cz%C4%85cego-qt-i-vtk-w-jedn%C4%85-aplikacj%C4%99-okienkow%C4%85-miros%C5%82aw-socha-2014"><span class="octicon octicon-link"></span></a>QtVtkStarter - Szkielet programu łączącego Qt i VTK w jedną aplikację okienkową (Mirosław Socha, 2014)</h3>
+
+<p>Projekt powstał na potrzeby prowadzonych zajęć dla studentów 4 roku kierunku Inżynieria Biomedyczna AGH.</p>
+
+<h3>
+<a name="%C5%9Arodowisko-pracy" class="anchor" href="#%C5%9Arodowisko-pracy"><span class="octicon octicon-link"></span></a>Środowisko pracy</h3>
+
+<p>Na komputerach w laboratorium zainstalowany jest system Ubuntu w wersji 10.4 LTS a nie najnowsza wersja.
+Wersje LTS (long-term support) mają wieloletnie wsparcie, nie ma w nich najmodniejszych i najnowszych rozwiązać. 
+W zamian oferują stabilną, sprawdzoną bazę oprogramowania. 
+W naszym przypadku, wersja LTS zapewnia dostęp do stabilnych (niekoniecznie najnowszych), 
+dobrze przetestowanych i opisanych wersji bibliotek Qt, VTK i ITK.</p>
+
+<p>System Ubuntu można zainstalować używając programu do wirtualizacji (VirtualBox, VMWare Workstation czy VirtualPC) lub instalując na dysku, obok Windowsów. Po uruchomieniu systemu z płytki, instalacja zazwyczaj przebiega płynnie, instalator podpowiada jak "przesunąć" Windowsy, instaluje program grub umożliwiający wybranie systemu operacyjnego przy starcie... itp.
+Po 15-20 minutach system jest gotowy do pracy :)</p>
+
+<p>Projekt powstał w Qt Creator 2.4.1., Qt 4.8.0 i zakłada użycie biblioteki VTK w wersji 5.8, dostępnej w repozytoriach.
+Instalacja Qt SDK: sudo apt-get install qt-sdk</p>
+
+<h3>
+<a name="niezb%C4%99dne-pakiety" class="anchor" href="#niezb%C4%99dne-pakiety"><span class="octicon octicon-link"></span></a>Niezbędne pakiety</h3>
+
+<p>Do wybrania w Menadżer pakietów Synaptic:</p>
+
+<ul>
+<li>główne pakiety vtk5: libvtk5.8, libvtk5-dev</li>
+<li>rozszerzenie do Qt vtk5-qt4: libvtk5-qt4, libvtk5-qt4-dev</li>
+<li>wrapery: python-vtk, python-vtkgdcm, vtk-tcl</li>
+<li>dodatki: vtk-doc, vtk-example, vtkdata, libvtkgdcm-tools</li>
+</ul><p>Instalacja VTK: sudo apt-get install libvtk5-dev libvtk5.8 libvtk5.8-qt4 libvtk5-qt4-dev vtkdata vtk-examples</p>
+
+<h3>
+<a name="tworzenie-projektu-w-qt-creator" class="anchor" href="#tworzenie-projektu-w-qt-creator"><span class="octicon octicon-link"></span></a>Tworzenie projektu w Qt Creator</h3>
+
+<p>Aplikacja stworzona jest w środowisku Qt Creator
+Kolejne kroki tworzenia czystej plikacji:</p>
+
+<ul>
+<li>tworzymy projekt „Aplikacja GUI Qt”</li>
+<li>
+<p>do pliku projektu (*.pro) dodajemy biblioteki:</p>
+
+<pre><code>LIBS += ­L/usr/lib ­lvtkCommon lvtksys ­lQVTK ­lvtkViews ­lvtkWidgets ­lvtkInfovis ­lvtkRendering ­lvtkGraphics ­lvtkImaging ­lvtkIO ­lvtkFiltering ­lvtkDICOMParser ­lvtkHybrid
+</code></pre>
+</li>
+</ul><p>oraz ścieżkę dostępu:</p>
+
+<pre><code>    INCLUDEPATH += /usr/include/vtk­582
+</code></pre>
+
+<h3>
+<a name="dodatkowe-informacje" class="anchor" href="#dodatkowe-informacje"><span class="octicon octicon-link"></span></a>Dodatkowe informacje</h3>
+
+<p>W repozytorium znajdują się wszystkie istotne kroki powstawania aplikacji.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
