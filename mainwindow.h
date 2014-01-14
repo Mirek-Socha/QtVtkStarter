@@ -23,6 +23,9 @@ public:
     ~MainWindow();
 
     void newVtkPipe();             // inicjalizacja strumienia VTK
+
+public slots:
+    void setConeResolution(int);
     
 private:
     Ui::MainWindow *ui;

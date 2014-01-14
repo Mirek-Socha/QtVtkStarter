@@ -12,7 +12,16 @@ MainWindow::MainWindow(QWidget *parent) :
     renWin = ui->qvtkWidget->GetRenderWindow();
     renWin->AddRenderer(renderer);
 
+    // utworzenie strumienia VTK
     newVtkPipe();
+
+    // łączenie sygnałów i slotów
+    connect(ui->actionQt,SIGNAL(triggered()),
+            qApp,SLOT(aboutQt()));
+
+    connect(ui->horizontalSlider,SIGNAL(valueChanged(int)),
+            this,SLOT(setConeResolution(int)));
+
 }
 
 MainWindow::~MainWindow()
@@ -41,4 +50,13 @@ void MainWindow::newVtkPipe()
     source->Delete();
     mapper->Delete();
     actor->Delete();
+}
+
+void MainWindow::setConeResolution(int res)
+{
+    // zmiana nastaw obiektu VTK
+    source->SetResolution(res);
+
+    // wymuszenie rysowania widgetu Qt ze sceną VTK
+    ui->qvtkWidget->repaint();
 }
