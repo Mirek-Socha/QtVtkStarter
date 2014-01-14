@@ -8,33 +8,37 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // przygotowanie widgetu VTK do działania
-    vtkSmartPointer<vtkRenderer> renderer =
-            vtkSmartPointer<vtkRenderer>::New();
+    renderer = vtkSmartPointer<vtkRenderer>::New();
+    renWin = ui->qvtkWidget->GetRenderWindow();
+    renWin->AddRenderer(renderer);
 
-    ui->qvtkWidget->GetRenderWindow()->AddRenderer(renderer);
-
-    // przykładowy kod VTK
-    vtkConeSource *cone = vtkConeSource::New();
-    cone->SetHeight( 3.0 );
-    cone->SetRadius( 1.0 );
-    cone->SetResolution( 10 );
-
-    vtkPolyDataMapper *coneMapper = vtkPolyDataMapper::New();
-    coneMapper->SetInputConnection( cone->GetOutputPort() );
-
-    vtkActor *coneActor = vtkActor::New();
-    coneActor->SetMapper( coneMapper );
-
-    renderer->AddActor(coneActor);
-    renderer->SetBackground(0.1, 0.2, 0.4);
-
-    // sprzątanie obiektów VTK
-    cone->Delete();
-    coneMapper->Delete();
-    coneActor->Delete();
+    newVtkPipe();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::newVtkPipe()
+{
+    // przykładowy kod VTK
+    source = vtkConeSource::New();
+    source->SetHeight( 3.0 );
+    source->SetRadius( 1.0 );
+    source->SetResolution( 10 );
+
+    mapper = vtkPolyDataMapper::New();
+    mapper->SetInputConnection( source->GetOutputPort() );
+
+    actor = vtkActor::New();
+    actor->SetMapper( mapper );
+
+    renderer->AddActor(actor);
+    renderer->SetBackground(0.1, 0.2, 0.4);
+
+    // sprzątanie obiektów VTK
+    source->Delete();
+    mapper->Delete();
+    actor->Delete();
 }
