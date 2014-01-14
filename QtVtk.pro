@@ -2,6 +2,10 @@
 #
 # Project created by QtCreator 2014-01-08T01:36:39
 #
+# Mirosław Socha : socha@agh.edu.pl
+#
+# http://mirek-socha.github.io/QtVtkStarter
+#
 #-------------------------------------------------
 
 QT       += core gui
