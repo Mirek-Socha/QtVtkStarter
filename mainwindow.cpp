@@ -19,8 +19,22 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionQt,SIGNAL(triggered()),
             qApp,SLOT(aboutQt()));
 
+    // przesłanie informacji z Qt do VTK
     connect(ui->horizontalSlider,SIGNAL(valueChanged(int)),
             this,SLOT(setConeResolution(int)));
+
+    // Zestawienie połączeń VTK->Gt:
+    connections = vtkSmartPointer<vtkEventQtSlotConnect>::New();
+
+    // przechwycenie zdarzeń VTK:
+    connections->Connect(ui->qvtkWidget->GetInteractor(),
+                         vtkCommand::LeftButtonPressEvent,
+                         this,
+                         SLOT(updateCamCoords(vtkObject*, unsigned long, void*, void*)));
+
+
+    // debug poprawności połączeń VTK->Qt na konsolę:
+    connections->PrintSelf(cout, vtkIndent());      // tak można sprawdzać dowolne obiekty VTK
 
 }
 
@@ -59,4 +73,20 @@ void MainWindow::setConeResolution(int res)
 
     // wymuszenie rysowania widgetu Qt ze sceną VTK
     ui->qvtkWidget->repaint();
+}
+
+// przykład pobrania wsp. kamery
+void MainWindow::updateCamCoords(vtkObject*, unsigned long, void*, void*)
+{
+    double camPosition[3];
+    renderer->GetActiveCamera()->GetPosition(camPosition);
+
+    QString str = QString("camera position: x=%1 : ty=%2 : z=%3")
+                  .arg(camPosition[0], 0, 'f', 4)
+                  .arg(camPosition[1], 0, 'f', 4)
+                  .arg(camPosition[2], 0, 'f', 4);
+
+    qDebug() << str;
+
+    ui->statusBar->showMessage(str);
 }
