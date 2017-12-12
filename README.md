@@ -3,7 +3,6 @@ QtVtkStarter
 
 ### QtVtkStarter - Szkielet programu łączącego Qt i VTK w jedną aplikację okienkową (Mirosław Socha, 2014)
 
-
 Projekt powstał na potrzeby prowadzonych zajęć dla studentów 4 roku kierunku Inżynieria Biomedyczna AGH.
 
 ### Środowisko pracy
@@ -39,11 +38,13 @@ Kolejne kroki tworzenia czystej plikacji
 * tworzymy projekt „Aplikacja GUI Qt”
 * do pliku projektu (*.pro) dodajemy biblioteki:
 
-LIBS += ­L/usr/lib ­lvtkCommon lvtksys ­lQVTK ­lvtkViews ­lvtkWidgets ­lvtkInfovis ­lvtkRendering ­lvtkGraphics ­lvtkImaging ­lvtkIO ­lvtkFiltering ­lvtkDICOMParser ­lvtkHybrid
+  LIBS += -L/usr/lib -lvtkCommon -lvtksys -lQVTK -lvtkViews -lvtkWidgets -lvtkInfovis -lvtkRendering -lvtkGraphics -lvtkImaging -lvtkIO -lvtkFiltering -lvtkDICOMParser -lvtkHybrid
   
 oraz ścieżkę dostępu:
 
-INCLUDEPATH += /usr/include/vtk­582
+  INCLUDEPATH += /usr/include/vtk-5.8
+
+Przed dodaniem ścieżek do pliku projektu zawsze warto sprawdzić, czy dopisywane pliki są faktycznie dostępne pod wskazanymi adresami. Przydaje się do tego linuksowa komenda _locate_.
 
 ### Dodatkowe informacje
 
@@ -51,10 +52,10 @@ W repozytorium znajdują się wszystkie istotne kroki powstawania aplikacji.
 
 ### ZADANIA
 
-Do tego kodu należy "przeszczepić" przykład Medical1 z przykładów VTK oraz obudować do o kontrolki Qt. Czynność powtórzyć dla kolejnych przykładów (Medical1-4).
+Do tego kodu należy "przeszczepić" przykład Medical1 z przykładów VTK oraz obudować go o kontrolki Qt. Czynność powtórzyć dla kolejnych przykładów (Medical1-4).
 Dla przypomnienia poprawna ścieżka do danych to:
 
-/usr/share/VTKData/Data/headsq
+  /usr/share/VTKData/Data/headsq
 
 Powodzenia!
 
