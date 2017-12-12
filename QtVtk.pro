@@ -21,7 +21,7 @@ HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
 
-# VTK
+# VTK - warto sprawdzić, czy na danym komuterze te ścieżki i pliki faktycznie istnieją i są poprawne
 LIBS    += -L/usr/lib -lvtkCommon\
            -lvtksys -lQVTK -lvtkViews -lvtkWidgets\
            -lvtkInfovis -lvtkRendering -lvtkGraphics\
